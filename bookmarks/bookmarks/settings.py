@@ -25,19 +25,21 @@ SECRET_KEY = 'fcn(6c4w-5pcta(&1*!9bt$i@_ic-bzacjl9ev3nezn0r%d8z&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysiteooo.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig',
     'django.contrib.admin',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,27 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '330360554329418'  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '5a5fcc5e5e6d771a132b3ec4db1b7ed8'  # Facebook App Secret
+
+SOCIAL_AUTH_TWITTER_KEY = 'hwwf84hpdQTktkvrna4bybGWS'  # Twitter Consumer Key
+# Twitter Consumer Secret
+SOCIAL_AUTH_TWITTER_SECRET = 'RrcfXDfYu51UycbCemQVhAe97OyE4uWjl0maerpaZLIKfRS2QA'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX'  # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'  # Google Consumer Secret

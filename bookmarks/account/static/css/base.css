@@ -124,10 +124,10 @@ input[type=submit], a.button {
 }
 .helptext {
     margin:0 0 20px 0;
-    color:#aaa;
+    color:rgb(219, 28, 28);
     clear:both;
     float:left;
-    font-size:13px;
+    font-size:14px;
 }
 /* messages */
 ul.messages {
